@@ -40,6 +40,12 @@ if __name__ == '__main__':
         print("Neck inclination: ", neck_inclination)
         print("Torso inclination: ", torso_inclination)
 
+        down_width = 20
+        down_height = 10
+        down_points = (down_width, down_height)
+        cv2.resize(result_fullface, down_points, interpolation=cv2.INTER_LINEAR)
+        cv2.resize(result_profile, down_points, interpolation=cv2.INTER_LINEAR)
+
         # Записование результатов
         cv2.imwrite(path_result_fullface, result_fullface)
         cv2.imwrite(path_result_profile, result_profile)

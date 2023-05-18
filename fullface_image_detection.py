@@ -79,20 +79,18 @@ def detect_image_fullface(image):
         pose = 1
 
         cv2.line(human, (l_shldr_x, l_shldr_y), (r_shldr_x, r_shldr_y), COLOR_GREEN, 4)
-        cv2.circle(human, (l_shldr_x, l_shldr_y), 7, COLOR_GREEN, -1)
-        cv2.circle(human, (r_shldr_x, r_shldr_y), 7, COLOR_GREEN, -1)
 
     else:
         pose = 0
 
         cv2.line(human, (l_shldr_x, l_shldr_y), (r_shldr_x, r_shldr_y), COLOR_RED, 4)
-        cv2.circle(human, (l_shldr_x, l_shldr_y), 7, COLOR_RED, -1)
-        cv2.circle(human, (r_shldr_x, r_shldr_y), 7, COLOR_RED, -1)
 
     # Отрисовка линий
     cv2.circle(human, (l_ear_x, l_ear_y), 7, COLOR_GREEN, -1)
     cv2.circle(human, (r_ear_x, r_ear_y), 7, COLOR_GREEN, -1)
     cv2.line(human, (l_ear_x, l_ear_y), (r_ear_x, r_ear_y), COLOR_GREEN, 4)
+    cv2.circle(human, (l_shldr_x, l_shldr_y), 7, COLOR_GREEN, -1)
+    cv2.circle(human, (r_shldr_x, r_shldr_y), 7, COLOR_GREEN, -1)
 
     boxes, classes, segmentations = yolov8_detect(image)
 

@@ -49,6 +49,5 @@ if __name__ == '__main__':
         # Записование результатов
         cv2.imwrite(path_result_fullface, result_fullface)
         cv2.imwrite(path_result_profile, result_profile)
-    except OSError:
-        print("Error")
-
+    except FileNotFoundError:
+        raise FileNotFoundError

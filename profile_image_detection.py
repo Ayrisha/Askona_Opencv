@@ -13,7 +13,9 @@ def detect_image_profile(image):
 
         Возвращаемое значение:
             human: обработанная фотография
-            pose: 1, если поза человека правильная; 2, если неправильная
+            pose: 1, если осанка человека правильная; 2, если неправильная
+            neck_inclination: угол наклона в пояснице
+            torso_inclination: угол наклона в спине
 
     """
     human = numpy.zeros((image.shape[0], image.shape[1], 3), numpy.uint8)
@@ -72,4 +74,4 @@ def detect_image_profile(image):
         if class_id == 0:
             cv2.polylines(human, [seg], True, COLOR_BLUE, 4)
 
-    return human, pose
+    return human, pose, neck_inclination, torso_inclination

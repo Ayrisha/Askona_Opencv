@@ -5,7 +5,7 @@ from profile_image_detection import detect_image_profile
 # Путь к фото в анфас
 path_image_fullface = 'image/fullface.jpg'
 # Путь к фото в профиль
-path_image_profile = 'image/profile.jpeg'
+path_image_profile = 'image/profile2.jpg'
 # Путь к результату после обработки фото в анфас
 path_result_fullface = 'image/result_fullface.jpg'
 # Путь к результату после обработки фото в профиль
@@ -13,23 +13,36 @@ path_result_profile = 'image/result_profile.jpg'
 
 
 if __name__ == '__main__':
-    # Чтение входных фото
-    image_fullface = cv2.imread(path_image_fullface)
-    image_profile = cv2.imread(path_image_profile)
+    try:
+        # Чтение входных фото
+        image_fullface = cv2.imread(path_image_fullface)
+        image_profile = cv2.imread(path_image_profile)
 
-    # Обработка фотограйия
-    result_fullface, human_height, head_size = detect_image_fullface(image_fullface)
-    result_profile, pose_mark = detect_image_profile(image_profile)
+        # Обработка фотограйия
+        result_fullface, human_height, head_width, pose_fullface, shldr_inclination = \
+            detect_image_fullface(image_fullface)
+        result_profile, pose_profile, neck_inclination, torso_inclination = detect_image_profile(image_profile)
 
-    # Отображение результатов
-    if pose_mark == 0:
-        print("Bad pose")
-    else:
-        print("Good pose")
+        # Отображение результатов
+        if pose_profile == 0:
+            print("Bad pose profile")
+        else:
+            print("Good pose profile")
 
-    print(human_height)
-    print(head_size)
+        if pose_fullface == 0:
+            print("Bad pose fullface")
+        else:
+            print("Good pose fullface")
 
-    # Записование результатов
-    cv2.imwrite(path_result_fullface, result_fullface)
-    cv2.imwrite(path_result_profile, result_profile)
+        print("Height: ", human_height)
+        print("Head: ", head_width)
+        print("Shoulder inclination: ", shldr_inclination)
+        print("Neck inclination: ", neck_inclination)
+        print("Torso inclination: ", torso_inclination)
+
+        # Записование результатов
+        cv2.imwrite(path_result_fullface, result_fullface)
+        cv2.imwrite(path_result_profile, result_profile)
+    except OSError:
+        print("Error")
+

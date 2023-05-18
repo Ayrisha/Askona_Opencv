@@ -1,5 +1,5 @@
 from background_detection import *
-from body_posture_detection import find_pose
+from body_posture_detection import *
 from colour import *
 from yolov8_detection import *
 
@@ -34,9 +34,12 @@ def detect_image_fullface(image):
             human: обработанная фотография
             рост человека
             размер головы
+            pose: 1, если осанка человека правильная; 2, если неправильная
+            shldr_inclination: угол отклонения в плечах
 
     """
     human_pixel_size = 0
+    pose = 0
 
     dominate_color_hsv = main_color_hsv(path_image_fullface)
 
@@ -69,13 +72,26 @@ def detect_image_fullface(image):
     r_ear_y = int(lm.landmark[lmPose.RIGHT_EAR].y * h)
 
     human_head_size = l_ear_x - r_ear_x
+    shldr_inclination = find_angle(r_shldr_x, r_shldr_y, l_shldr_x, l_shldr_y)
+    shldr_inclination = abs(90 - shldr_inclination)
+
+    if shldr_inclination < 1:
+        pose = 1
+
+        cv2.line(human, (l_shldr_x, l_shldr_y), (r_shldr_x, r_shldr_y), COLOR_GREEN, 4)
+        cv2.circle(human, (l_shldr_x, l_shldr_y), 7, COLOR_GREEN, -1)
+        cv2.circle(human, (r_shldr_x, r_shldr_y), 7, COLOR_GREEN, -1)
+
+    else:
+        pose = 0
+
+        cv2.line(human, (l_shldr_x, l_shldr_y), (r_shldr_x, r_shldr_y), COLOR_RED, 4)
+        cv2.circle(human, (l_shldr_x, l_shldr_y), 7, COLOR_RED, -1)
+        cv2.circle(human, (r_shldr_x, r_shldr_y), 7, COLOR_RED, -1)
 
     # Отрисовка линий
-    cv2.circle(human, (l_shldr_x, l_shldr_y), 7, COLOR_GREEN, -1)
-    cv2.circle(human, (r_shldr_x, r_shldr_y), 7, COLOR_GREEN, -1)
     cv2.circle(human, (l_ear_x, l_ear_y), 7, COLOR_GREEN, -1)
     cv2.circle(human, (r_ear_x, r_ear_y), 7, COLOR_GREEN, -1)
-    cv2.line(human, (l_shldr_x, l_shldr_y), (r_shldr_x, r_shldr_y), COLOR_GREEN, 4)
     cv2.line(human, (l_ear_x, l_ear_y), (r_ear_x, r_ear_y), COLOR_GREEN, 4)
 
     boxes, classes, segmentations = yolov8_detect(image)
@@ -91,5 +107,5 @@ def detect_image_fullface(image):
             cv2.circle(human, (int(x), int(y2)), 7, COLOR_GREEN, -1)
             cv2.line(human, (int(x), int(y)), (int(x), int(y2)), COLOR_GREEN, 4)
 
-    return human, find_real_size(human_pixel_size, background_pixel_size), find_real_size(human_head_size,
-                                                                                          background_pixel_size)
+    return human, round(find_real_size(human_pixel_size, background_pixel_size)), \
+           round(find_real_size(human_head_size, background_pixel_size)), pose, shldr_inclination

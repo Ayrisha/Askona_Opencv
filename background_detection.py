@@ -3,7 +3,7 @@ import numpy
 import cv2
 from colorthief import ColorThief
 
-# Значения для определение диапазона цвета
+# Чувствительность к цвету для нохождение доминантного цвета
 sensitivity = 15
 
 
@@ -34,10 +34,32 @@ def find_mask_background(dominate_color_hsv, image_hsv):
         Возвращаемое значение:
              маска фона
     """
+    m_color = []
+    p_color = []
+    j = 0
+
+    for color_hsv in dominate_color_hsv:
+        if color_hsv > sensitivity:
+            m_color.append(color_hsv - sensitivity)
+        else:
+            m_color.append(color_hsv)
+
+        if j == 0:
+            if color_hsv + sensitivity < 180:
+                p_color.append(color_hsv + sensitivity)
+            else:
+                p_color.append(color_hsv)
+        else:
+            if color_hsv + sensitivity < 256:
+                p_color.append(color_hsv + sensitivity)
+            else:
+                p_color.append(color_hsv)
+        j = j + 1
+
     lower_color = numpy.array(
-        (dominate_color_hsv[0] - sensitivity, dominate_color_hsv[1] - sensitivity, dominate_color_hsv[2] - sensitivity))
+        (m_color[0], m_color[1], m_color[2]))
     upper_color = numpy.array(
-        (dominate_color_hsv[0] + sensitivity, dominate_color_hsv[1] + sensitivity, dominate_color_hsv[2] + sensitivity))
+        (p_color[0], p_color[1], p_color[2]))
     return cv2.inRange(image_hsv, lower_color, upper_color)
 
 

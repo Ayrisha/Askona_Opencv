@@ -74,4 +74,4 @@ def detect_image_profile(image):
         if class_id == 0:
             cv2.polylines(human, [seg], True, COLOR_BLUE, 4)
 
-    return human, pose, neck_inclination, torso_inclination
+    return human, pose, round(neck_inclination), round(torso_inclination)

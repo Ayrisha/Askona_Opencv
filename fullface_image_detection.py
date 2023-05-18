@@ -106,4 +106,4 @@ def detect_image_fullface(image):
             cv2.line(human, (int(x), int(y)), (int(x), int(y2)), COLOR_GREEN, 4)
 
     return human, round(find_real_size(human_pixel_size, background_pixel_size)), \
-           round(find_real_size(human_head_size, background_pixel_size)), pose, shldr_inclination
+           round(find_real_size(human_head_size, background_pixel_size)), pose, round(shldr_inclination)

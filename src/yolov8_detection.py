@@ -4,15 +4,15 @@ import numpy
 
 def yolov8_detect(image):
     """
-    yolov8_detect находит предметы на фото
+    yolov8_detect finds objects in the photo
 
-        Параметры:
-            image: фото
+        :argument
+            image: foto
 
-        Возвращаемое значение:
-            boxes: ограничивающие рамки найденных предметов
-            class_ids: id найденных предметов
-            segmentation_contours_idx: сегментация найденных предметов
+        :returns
+            boxes: bounding boxes of found items
+            class_ids: id of found items
+            segmentation_contours_idx: segmentation of found items
 
     """
     height, width, channels = image.shape

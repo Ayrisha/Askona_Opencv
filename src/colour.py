@@ -1,9 +1,9 @@
-# Перевод цвета из RGB в BGR
+# Color conversion from RGB to BGR
 def color_rgb(red, green, blue):
     return blue, green, red
 
 
-# Переменные цвета
+# Variable colors
 COLOR_RED = color_rgb(255, 0, 0)
 COLOR_GREEN = color_rgb(0, 255, 0)
 COLOR_LIGHT_BLUE = color_rgb(129, 231, 255)

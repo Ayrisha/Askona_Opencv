@@ -3,36 +3,37 @@ import numpy
 import cv2
 from colorthief import ColorThief
 
-# Чувствительность к цвету для нохождение доминантного цвета
+# Color sensitivity for finding the dominant color
 sensitivity = 15
 
 
 def main_color_hsv(filename):
     """
-    main_color_hsv определяет доминирующий цвет на фото
+    main_color_hsv determines the dominant color in the photo
 
-        Параметры:
-            filename: путь к фото
+        :argument
+            filename: path to the photo
 
-        Возвращаемое значение:
-            HSV код доминирующего цвета
+        :returns
+            dominate_color_hsv: HSV code of the dominant color
     """
     color_thief = ColorThief(filename)
     color = color_thief.get_color(quality=1)
     color_hsv = colorsys.rgb_to_hsv(color[0] / 255, color[1] / 255, color[2] / 255)
-    return int(color_hsv[0] * 179), int(color_hsv[1] * 255), int(color_hsv[2] * 255)
+    dominate_color_hsv = int(color_hsv[0] * 179), int(color_hsv[1] * 255), int(color_hsv[2] * 255)
+    return dominate_color_hsv
 
 
 def find_mask_background(dominate_color_hsv, image_hsv):
     """
-    find_mask_background находит маску фона
+    find_mask_background finds the background mask
 
-        Параметры:
-            dominate_color_hsv: доминирующий цвет в HSV
-            image_hsv: фото в HSV
+        :argument
+            dominate_color_hsv: dominant color in HSV
+            image_hsv: photo in HSV
 
-        Возвращаемое значение:
-             маска фона
+        :returns
+            photo with background mask
     """
     m_color = []
     p_color = []
@@ -65,15 +66,15 @@ def find_mask_background(dominate_color_hsv, image_hsv):
 
 def find_background_pixel_size(background):
     """
-    find_background_pixel_size находит кол-во пикселей в фоне
+    find_background_pixel_size finds the number of pixels in the background
 
-        Параметры:
-            background: маска фона
+        :argument
+            background: background mask
 
-        Возвращаемое значение:
-            lower - upper: кол-во пикселей фона
-            upper: наивысшая точка фона
-            lower: наинизшая точка фона
+        :returns
+            distinction: number of background pixels
+            upper: the highest point of the background
+            lower: the lowest point of the background
     """
     upper = background.shape[0]
     lower = 0
@@ -88,4 +89,6 @@ def find_background_pixel_size(background):
         if y < upper:
             upper = y
 
-    return lower - upper, upper, lower
+    distinction = lower - upper
+
+    return distinction, upper, lower

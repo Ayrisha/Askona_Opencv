@@ -1,12 +1,12 @@
 import cv2
-import fullface_detection as f
+from src import fullface_detection as f
 import profile_detection as p
 
 
 # Path to full-face photo
 path_image_fullface = 'image/fullface.jpg'
 # Path to profile photo
-path_image_profile = 'image/profile2.jpg'
+path_image_profile = 'image/profile.jpeg'
 # Path to the result after processing the full-face photo
 path_result_fullface = 'image/result_fullface.jpg'
 # Path to the result after processing the photo in the profile

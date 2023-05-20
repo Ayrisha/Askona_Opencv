@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>fullface_detection API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>fullface_detection</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import cv2
+import numpy
+import background_detection as b
+import body_posture as p
+import colour
+import yolov8_detection as yolov
+
+# The way to the full-face photo
+path_image_fullface = &#39;image/fullface.jpg&#39;
+# Real background size
+background_size = 2700
+
+
+def find_real_size(pixel_size, background_pixel_size):
+    &#34;&#34;&#34;
+    find_real_size determines the actual size of the subject relative to the known background
+
+        :argument
+            pixel_size: number of pixels in the item
+            background_pixel_size: number of pixels in the background
+
+        :return
+            item_size: item size
+    &#34;&#34;&#34;
+    item_size = pixel_size * background_size / background_pixel_size
+    return item_size
+
+
+def detect_image_fullface(image):
+    &#34;&#34;&#34;
+    detect_image_fullface processes a full-face photo
+
+        :argument
+            image: photo
+
+        :returns
+            human: processed photo
+            human growth
+            head size
+            pose: 1, if the person&#39;s posture is correct; 0, if incorrect
+            shldr_inclination: angle of deviation in the shoulders
+
+    &#34;&#34;&#34;
+    human_pixel_size = 0
+    pose = 0
+
+    dominate_color_hsv = b.main_color_hsv(path_image_fullface)
+
+    image_hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+
+    mask_background = b.find_mask_background(dominate_color_hsv, image_hsv)
+    background = cv2.bitwise_and(image_hsv, image_hsv, mask=mask_background)
+
+    background_pixel_size, upper, lower = b.find_background_pixel_size(background)
+
+    human = numpy.zeros((image.shape[0], image.shape[1], 3), numpy.uint8)
+    human[:, :] = colour.COLOR_LIGHT_BLUE
+
+    h, w, lm, lmPose = p.find_pose(image)
+
+    # Left shoulder
+    l_shldr_x = int(lm.landmark[lmPose.LEFT_SHOULDER].x * w)
+    l_shldr_y = int(lm.landmark[lmPose.LEFT_SHOULDER].y * h)
+
+    # Right shoulder
+    r_shldr_x = int(lm.landmark[lmPose.RIGHT_SHOULDER].x * w)
+    r_shldr_y = int(lm.landmark[lmPose.RIGHT_SHOULDER].y * h)
+
+    # Left ear
+    l_ear_x = int(lm.landmark[lmPose.LEFT_EAR].x * w)
+    l_ear_y = int(lm.landmark[lmPose.LEFT_EAR].y * h)
+
+    # Right ear
+    r_ear_x = int(lm.landmark[lmPose.RIGHT_EAR].x * w)
+    r_ear_y = int(lm.landmark[lmPose.RIGHT_EAR].y * h)
+
+    human_head_size = l_ear_x - r_ear_x
+    shldr_inclination = p.find_angle(r_shldr_x, r_shldr_y, l_shldr_x, l_shldr_y)
+    shldr_inclination = abs(90 - shldr_inclination)
+
+    if shldr_inclination &lt; 1:
+        pose = 1
+
+        cv2.line(human, (l_shldr_x, l_shldr_y), (r_shldr_x, r_shldr_y), colour.COLOR_GREEN, 4)
+
+    else:
+        pose = 0
+
+        cv2.line(human, (l_shldr_x, l_shldr_y), (r_shldr_x, r_shldr_y), colour.COLOR_RED, 4)
+
+    # Drawing lines
+    cv2.circle(human, (l_ear_x, l_ear_y), 7, colour.COLOR_GREEN, -1)
+    cv2.circle(human, (r_ear_x, r_ear_y), 7, colour.COLOR_GREEN, -1)
+    cv2.line(human, (l_ear_x, l_ear_y), (r_ear_x, r_ear_y), colour.COLOR_GREEN, 4)
+    cv2.circle(human, (l_shldr_x, l_shldr_y), 7, colour.COLOR_GREEN, -1)
+    cv2.circle(human, (r_shldr_x, r_shldr_y), 7, colour.COLOR_GREEN, -1)
+
+    boxes, classes, segmentations = yolov.yolov8_detect(image)
+
+    # Drawing the outline of a person and the main points
+    for box, class_id, seg in zip(boxes, classes, segmentations):
+        (x, y, x2, y2) = box
+        if class_id == 0:
+            human_pixel_size = y2 - y
+            cv2.polylines(human, [seg], True, colour.COLOR_BLUE, 4)
+            x = x + (int(x2) - int(x)) / 2
+            cv2.circle(human, (int(x), int(y)), 7, colour.COLOR_GREEN, -1)
+            cv2.circle(human, (int(x), int(y2)), 7, colour.COLOR_GREEN, -1)
+            cv2.line(human, (int(x), int(y)), (int(x), int(y2)), colour.COLOR_GREEN, 4)
+
+    # cv2.line(human, (0, upper), (w, upper), COLOR_RED, 4)
+    # cv2.line(human, (0, lower), (w, lower), COLOR_RED, 4)
+
+    return human, round(find_real_size(human_pixel_size, background_pixel_size)), \
+           round(find_real_size(human_head_size, background_pixel_size)), pose, round(shldr_inclination)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="fullface_detection.detect_image_fullface"><code class="name flex">
+<span>def <span class="ident">detect_image_fullface</span></span>(<span>image)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>detect_image_fullface processes a full-face photo</p>
+<pre><code>:argument
+    image: photo
+
+:returns
+    human: processed photo
+    human growth
+    head size
+    pose: 1, if the person's posture is correct; 0, if incorrect
+    shldr_inclination: angle of deviation in the shoulders
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def detect_image_fullface(image):
+    &#34;&#34;&#34;
+    detect_image_fullface processes a full-face photo
+
+        :argument
+            image: photo
+
+        :returns
+            human: processed photo
+            human growth
+            head size
+            pose: 1, if the person&#39;s posture is correct; 0, if incorrect
+            shldr_inclination: angle of deviation in the shoulders
+
+    &#34;&#34;&#34;
+    human_pixel_size = 0
+    pose = 0
+
+    dominate_color_hsv = b.main_color_hsv(path_image_fullface)
+
+    image_hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+
+    mask_background = b.find_mask_background(dominate_color_hsv, image_hsv)
+    background = cv2.bitwise_and(image_hsv, image_hsv, mask=mask_background)
+
+    background_pixel_size, upper, lower = b.find_background_pixel_size(background)
+
+    human = numpy.zeros((image.shape[0], image.shape[1], 3), numpy.uint8)
+    human[:, :] = colour.COLOR_LIGHT_BLUE
+
+    h, w, lm, lmPose = p.find_pose(image)
+
+    # Left shoulder
+    l_shldr_x = int(lm.landmark[lmPose.LEFT_SHOULDER].x * w)
+    l_shldr_y = int(lm.landmark[lmPose.LEFT_SHOULDER].y * h)
+
+    # Right shoulder
+    r_shldr_x = int(lm.landmark[lmPose.RIGHT_SHOULDER].x * w)
+    r_shldr_y = int(lm.landmark[lmPose.RIGHT_SHOULDER].y * h)
+
+    # Left ear
+    l_ear_x = int(lm.landmark[lmPose.LEFT_EAR].x * w)
+    l_ear_y = int(lm.landmark[lmPose.LEFT_EAR].y * h)
+
+    # Right ear
+    r_ear_x = int(lm.landmark[lmPose.RIGHT_EAR].x * w)
+    r_ear_y = int(lm.landmark[lmPose.RIGHT_EAR].y * h)
+
+    human_head_size = l_ear_x - r_ear_x
+    shldr_inclination = p.find_angle(r_shldr_x, r_shldr_y, l_shldr_x, l_shldr_y)
+    shldr_inclination = abs(90 - shldr_inclination)
+
+    if shldr_inclination &lt; 1:
+        pose = 1
+
+        cv2.line(human, (l_shldr_x, l_shldr_y), (r_shldr_x, r_shldr_y), colour.COLOR_GREEN, 4)
+
+    else:
+        pose = 0
+
+        cv2.line(human, (l_shldr_x, l_shldr_y), (r_shldr_x, r_shldr_y), colour.COLOR_RED, 4)
+
+    # Drawing lines
+    cv2.circle(human, (l_ear_x, l_ear_y), 7, colour.COLOR_GREEN, -1)
+    cv2.circle(human, (r_ear_x, r_ear_y), 7, colour.COLOR_GREEN, -1)
+    cv2.line(human, (l_ear_x, l_ear_y), (r_ear_x, r_ear_y), colour.COLOR_GREEN, 4)
+    cv2.circle(human, (l_shldr_x, l_shldr_y), 7, colour.COLOR_GREEN, -1)
+    cv2.circle(human, (r_shldr_x, r_shldr_y), 7, colour.COLOR_GREEN, -1)
+
+    boxes, classes, segmentations = yolov.yolov8_detect(image)
+
+    # Drawing the outline of a person and the main points
+    for box, class_id, seg in zip(boxes, classes, segmentations):
+        (x, y, x2, y2) = box
+        if class_id == 0:
+            human_pixel_size = y2 - y
+            cv2.polylines(human, [seg], True, colour.COLOR_BLUE, 4)
+            x = x + (int(x2) - int(x)) / 2
+            cv2.circle(human, (int(x), int(y)), 7, colour.COLOR_GREEN, -1)
+            cv2.circle(human, (int(x), int(y2)), 7, colour.COLOR_GREEN, -1)
+            cv2.line(human, (int(x), int(y)), (int(x), int(y2)), colour.COLOR_GREEN, 4)
+
+    # cv2.line(human, (0, upper), (w, upper), COLOR_RED, 4)
+    # cv2.line(human, (0, lower), (w, lower), COLOR_RED, 4)
+
+    return human, round(find_real_size(human_pixel_size, background_pixel_size)), \
+           round(find_real_size(human_head_size, background_pixel_size)), pose, round(shldr_inclination)</code></pre>
+</details>
+</dd>
+<dt id="fullface_detection.find_real_size"><code class="name flex">
+<span>def <span class="ident">find_real_size</span></span>(<span>pixel_size, background_pixel_size)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>find_real_size determines the actual size of the subject relative to the known background</p>
+<pre><code>:argument
+    pixel_size: number of pixels in the item
+    background_pixel_size: number of pixels in the background
+
+:return
+    item_size: item size
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def find_real_size(pixel_size, background_pixel_size):
+    &#34;&#34;&#34;
+    find_real_size determines the actual size of the subject relative to the known background
+
+        :argument
+            pixel_size: number of pixels in the item
+            background_pixel_size: number of pixels in the background
+
+        :return
+            item_size: item size
+    &#34;&#34;&#34;
+    item_size = pixel_size * background_size / background_pixel_size
+    return item_size</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="fullface_detection.detect_image_fullface" href="#fullface_detection.detect_image_fullface">detect_image_fullface</a></code></li>
+<li><code><a title="fullface_detection.find_real_size" href="#fullface_detection.find_real_size">find_real_size</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
